@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="36aa2c75-5772-43af-8033-20f61ace08c8" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="sampleFlow" doc:id="8074a4d1-277b-4a6e-a0ac-ecf9e4065370" >
+		<http:listener doc:name="Listener" doc:id="fde32315-d7f5-4d8e-a160-7f9762f38495" config-ref="HTTP_Listener_config" path="/raj"/>
+		<logger level="INFO" doc:name="Logger" doc:id="5d4cb3b1-0d32-4f14-9aa8-5d82fdf8585f" message="listener logger"/>
+		<set-payload value='#["hello world"]' doc:name="Set Payload" doc:id="f53e2715-d11b-4841-832c-3229ecfabe5e" />
+		<logger level="INFO" doc:name="Logger" doc:id="19272548-11fb-4b6a-b8fc-d8f0f73f45b1" message="setpayload logger"/>
+	</flow>
+</mule>
